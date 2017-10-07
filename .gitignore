@@ -1,0 +1,28 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+.idea/
+.vscode/
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# from  data-quality-ee/.gitignore
+.DS_Store
+target/
+bin/
+class/
+dist/
+.settings/
+.idea/
+*.ipr
+*.iml
+*.iws
+*.jardesc
+*.directory
+.cache*
+/.project
+*~

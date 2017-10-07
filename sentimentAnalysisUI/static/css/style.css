@@ -1,0 +1,15 @@
+.home {
+  display: flex; /* contexte sur le parent */
+}
+
+.chart {
+    float:left;
+    width:30%;
+    margin: auto;
+    padding-left: 150px;
+}
+
+.Tweettable {
+    margin-left:5%;
+    height: 600px;
+}
