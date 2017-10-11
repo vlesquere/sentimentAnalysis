@@ -2,24 +2,26 @@
 
   <div>
     <h2>Sentiment Analysis</h2>
+    
+    <vue-toastr ref='toastr'></vue-toastr>
+    
+    <div class="home">
+      <span class="chart">
+        <bar-chart :chart-data="datacollection"></bar-chart>
+      </span>
 
-  <div class="home">
+      <div class="Tweettable">
+        <vue-good-table
+          title="Tweet Table"
+          :columns="columns"
+          :rows="tweets"
+          :paginate="true"
+          :lineNumbers="true"/>
+      </div>
 
-    <span class="chart">
-      <bar-chart :chart-data="datacollection"></bar-chart>
-    </span>
-
-    <div class="Tweettable">
-      <vue-good-table
-        title="Tweet Table"
-        :columns="columns"
-        :rows="tweets"
-        :paginate="true"
-        :lineNumbers="true"/>
     </div>
 
-   </div>
-   </div>
+ </div>
 
 </template>
 
@@ -30,6 +32,7 @@ import axios from 'axios'
 import BarChart from './BarChart.js'
 import _ from 'lodash'
 import Vue from 'vue'
+import VueToastr from 'vue-toastr'
 import VueGoodTable from 'vue-good-table'
 
 Vue.use(VueGoodTable)
@@ -37,6 +40,7 @@ Vue.use(VueGoodTable)
 export default ({
   name: 'home',
   components: {
+    VueToastr,
     BarChart
   },
   data () {
@@ -58,6 +62,16 @@ export default ({
   created: function () {
     this.getTweets()
   },
+  mounted: function () {
+    this.$refs.toastr.Add({
+      title: 'Pending...',
+      msg: 'searching for tweets',
+      clickClose: false, // Click Close Disable
+      timeout: 5000, // Remember defaultTimeout is 5 sec..
+      position: 'toast-bottom-center',
+      type: 'success'
+    })
+  },
   methods: {
     getTweets: function () {
       axios.get(TWEETS_URI, {
@@ -73,7 +87,7 @@ export default ({
             datasets: [
               {
                 label: 'Sentiments',
-                backgroundColor: '#4a7f8b',
+                backgroundColor: '#00a1b3',
                 data: Object.values(nbValueBySentiment)
               }
             ]

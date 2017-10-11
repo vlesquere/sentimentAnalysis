@@ -18,6 +18,7 @@
     "vue-good-table": "^1.14.1",
     "vue-lodash": "^1.0.4",
     "vue-router": "^2.7.0",
+    "vue-toastr": "^2.0.9",
     "vuetable": "^1.5.12"
   },
   "devDependencies": {

@@ -11,5 +11,12 @@
 
 .Tweettable {
     margin-left:5%;
-    height: 600px;
+}
+
+.sorting {
+    color: #00a1b3;
+}
+
+.line-numbers {
+    color: #00a1b3;
 }
