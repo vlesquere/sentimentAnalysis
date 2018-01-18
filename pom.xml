@@ -22,5 +22,7 @@
 
   <modules>
     <module>sentimentAnalysisBack</module>
+    <module>sentimentAnalysisBack_interviewOpenNLP</module>
+    <module>sentimentAnalysisBack_interviewStanford</module>
   </modules>
 </project>

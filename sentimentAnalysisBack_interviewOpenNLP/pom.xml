@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.talend</groupId>
-    <artifactId>sentimentAnalysisBack</artifactId>
+    <artifactId>sentimentAnalysisBack_interviewOpenNLP</artifactId>
 
     <parent>
         <groupId>org.talend</groupId>
@@ -26,22 +26,9 @@
         </dependency>
 
         <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.8.0</version>
-        </dependency>
-
-        <dependency>
-            <groupId>edu.stanford.nlp</groupId>
-            <artifactId>stanford-corenlp</artifactId>
-            <version>3.6.0</version>
-            <classifier>models</classifier> <!--  will get the dependent model jars -->
-        </dependency>
-
-        <dependency>
             <groupId>org.apache.opennlp</groupId>
             <artifactId>opennlp-tools</artifactId>
-            <version>1.8.4</version>
+            <version>1.5.3</version>
         </dependency>
     </dependencies>
 

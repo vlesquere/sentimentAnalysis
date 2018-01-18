@@ -16,7 +16,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.social.twitter.api.SearchParameters;
+import org.springframework.social.twitter.api.SearchResults;
 import org.springframework.social.twitter.api.Tweet;
+import org.springframework.social.twitter.api.Twitter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +31,7 @@ import org.talend.sa.stanford.StanfordUtils;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -52,25 +56,7 @@ public class TwitterController {
         List<Tweet> results = retriever.getTweets();
 
         for (Tweet tweet : results) {
-            String tweetText = tweet.getText();
-
-            Sentiment sentiment = new Sentiment();
-            sentiment.setMessage(tweetText);
-            sentiment.setScore(SentimentAnalysis.findSentimentStanford_NeuralNetwork(tweetText)); //score with neural network
-            sentiments.add(sentiment);
-
-            System.out.println("Score Open NLP : " + SentimentAnalysis.findSentimentOpenNLP(tweetText));
-            try {
-                List<String> tokens = StanfordUtils.tokenize(tweetText);
-                Map<String, String> taggedTokens = StanfordUtils.posTag(tokens); //score without neural network
-
-                System.out.println(" ---------------- ");
-                System.out.println(tweetText);
-                taggedTokens.keySet().forEach(taggedToken -> System.out.println(taggedToken + " : " + taggedTokens.get(taggedToken)));
-
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
+            //analyze all tweets and the results to the "sentiments" collection
         }
 
         return sentiments;
